@@ -1,4 +1,4 @@
-# NOC
+# Non-original-content
 # algo
 The snippets you are asked to code way too often in competitive programming.
 
