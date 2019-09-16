@@ -1,4 +1,5 @@
 # Non-original-content
+original link - https://github.com/monir06/algo/
 # algo
 The snippets you are asked to code way too often in competitive programming.
 
