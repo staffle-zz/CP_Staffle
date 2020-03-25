@@ -9,7 +9,7 @@
 #include "bits/stdc++.h"  // plz dont remove this ;)
 // step2 . download the file stdc++.h from the link below and save it to path below.
 /* 
-    -link --> 
+    -link --> https://github.com/amit-nits/justforsharing/blob/master/debugger/stdc%2B%2B.h
     -path --> Current_program_path ( working folder )/ bits (Make the folder) / stdc++.h (filename)
 */
 using namespace std;
