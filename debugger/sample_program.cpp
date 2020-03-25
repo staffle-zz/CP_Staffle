@@ -7,7 +7,7 @@
 #define dbg(...) ; // remove this line if u can remember commenting every dbg() line before submitting (ps. i can not).
 #define db(...) ; // // remove this line if u can remember commenting every dbg() line before submitting (ps. i can not).
 #include "bits/stdc++.h"  // plz dont remove this ;)
-// download the file stdc++.h from the link below and save it to path below.
+// step2 . download the file stdc++.h from the link below and save it to path below.
 /* 
     -link --> 
     -path --> Current_program_path ( working folder )/ bits (Make the folder) / stdc++.h (filename)
