@@ -6,7 +6,7 @@ const int mx = 1e5;
 
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 ll rnd(ll x=0, ll y=inf) {return (rng() % (y-x +1)) + x;};
-struct generator{
+namespace generator{
 	ll get_num(ll a = 0 , ll b = inf){
 		return rnd(a,b);
 	}
@@ -84,55 +84,60 @@ struct generator{
 			return res;
 		}
 	}
-} g;
+};
+using namespace generator;
 /*
-	-> g.get_num (a , b); // gives a random number between [a,b] if a , b given. otherwise g.get_num() gives a random_number between 0 and 10**18;
-	-> g.get_string(l , bool lowercase_only = true) gives a string of length , (by default lowercase you can change that by calling g.get_string(len,false)); 
-	-> g.get_array(len , min_num_of_array , max_num_of_array) note that this returns a vector;
-	-> g.get_tree(n) gives a tree of n nodes (list of edges)
-	-> g.get_simple_graph(nodes, edges , bool  connected = 1) // you can change connected/disconnected option too. (list of edges)
+	-> get_num (a , b); // gives a random number between [a,b] if a , b given. otherwise get_num() gives a random_number between 0 and 10**18;
+	-> get_string(l , bool lowercase_only = true) gives a string of length , (by default lowercase you can change that by calling get_string(len,false)); 
+	-> get_array(len , min_num_of_array , max_num_of_array) note that this returns a vector;
+	-> get_tree(n) gives a tree of n nodes (list of edges)
+	-> get_simple_graph(nodes, edges , bool  connected = 1) // you can change connected/disconnected option too. (list of edges)
 */
 struct demo{
 	demo(){
-		cout << g.get_num() << endl;
-		cout << g.get_num(10 , 20) << "\n";
-		vector<int> v = g.get_array(12 , 1 , 1000); // size , min_element , max_element.
+		cout << get_num() << endl;
+		cout << get_num(10 , 20) << "\n";
+		vector<int> v = get_array(12 , 1 , 1000); // size , min_element , max_element.
 		// you can call g.get_array() , or g.get_array(10) too , see definition for details.
 		cout << "the array generated is {";
 		for(auto i: v)
 			cout << i << ", ";
 		cout << " }" << endl;
 
-		vector<pair<int, int>> tree = g.get_tree(5);
+		vector<pair<int, int>> tree = get_tree(5);
 		cout << "the tree generated has edgelist { ";
 		for(auto i: tree)
 			cout << "(" << i.first << ", " << i.second << ") , ";
 		cout << " }" << endl;
 
 		// similary for graph
-		g.get_simple_graph(10 , 12); // connected_graph
-		g.get_simple_graph(10 , 12 , 0); // can be disconnected_graph
+		get_simple_graph(10 , 12); // connected_graph
+		get_simple_graph(10 , 12 , 0); // can be disconnected_graph
 		// both graph will have 10 nodes and 12 edges.
 	}
 
-}d;
+};
+
+
 /* for a question having sample tests like this
-T
+T 
 N
-an string of size N. (S)
+S (an string)
 an array of size N.(a1 , a2 , a3 , a4 , .... an)
 */
 void example(){
-	int N = g.get_num(1,10);
-	string s = g.get_string(N);
-	vector<int> v = g.get_array(N , 0 , 20);
+	int N = get_num(1,10);
+	string s = get_string(N);
+	vector<int> v = get_array(N , 0 , 20);
 	// you have to output them too.
 	cout << N << endl;
 	cout << s << endl;
 	for(auto i:v) cout << i << " "; cout << endl;
 }
+/*-----------------------------------------------------------------------------------------------------------*/
+// comment the next line in if you have multiple test_cases.
+#define SINGLE_TEST
 
-// uncomment the line in main function if you have multiple_test_cases.
 // complete this function for each test case.
 void make_test(){
 
@@ -141,9 +146,11 @@ void make_test(){
 
 }
 int main(){
-    ios_base::sync_with_stdio(0);cout.tie(0);cin.tie(0);
+    // demo* d = new demo;
     int t = 1;
-    // t = g.get_num(1,1000); cout << t << endl; // if no test cases comment this line.
+    #ifndef SINGLE_TEST 
+    	t = get_num(1,1000), cout << t << endl;
+    #endif
     while(t--){
     	make_test();
     	// example();
