@@ -116,6 +116,21 @@ struct demo{
 	}
 
 }d;
+/* for a question having sample tests like this
+T
+N
+an string of size N. (S)
+an array of size N.(a1 , a2 , a3 , a4 , .... an)
+*/
+void example(){
+	int N = g.get_num(1,10);
+	string s = g.get_string(N);
+	vector<int> v = g.get_array(N , 0 , 20);
+	// you have to output them too.
+	cout << N << endl;
+	cout << s << endl;
+	for(auto i:v) cout << i << " "; cout << endl;
+}
 
 // uncomment the line in main function if you have multiple_test_cases.
 // complete this function for each test case.
@@ -131,6 +146,7 @@ int main(){
     // t = g.get_num(1,1000); cout << t << endl; // if no test cases comment this line.
     while(t--){
     	make_test();
+    	// example();
     }
     
 }
