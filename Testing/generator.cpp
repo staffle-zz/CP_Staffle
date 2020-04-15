@@ -46,43 +46,41 @@ namespace generator{
 	}
 	vector<pair<int, int>> get_simple_graph(int n , int m , bool connected = true){
 		vector<pair<int, int>> res;
+		set<pair<int , int>> edge_set;
 		assert(2*m <= 1ll*n*(n-1)); // maximum condition for edge
 		if(connected){
-			assert(m >= n-1);
+			assert(m >= n-1); // minimum edges of connected graph
 			res = get_tree(n);
-			set<pair<int , int>> additional_edges;
-			for(auto i:res) additional_edges.insert(i);
+			for(auto i:res) edge_set.insert(i);
 			res.clear();
 			for(int i = n; i <= m; i++){
 				label:
 				int u = rnd(1,n);
 				int v = rnd(1,n);
-				if(u==v or additional_edges.count({u,v}) or additional_edges.count({v,u})) goto label;
+				if(u==v or edge_set.count({u,v}) or edge_set.count({v,u})) goto label;
 				else{
-					additional_edges.insert({u,v});
+					edge_set.insert({u,v});
 				}
 			}
-			for(auto i:additional_edges){
-				res.push_back(i);
-			}
-			shuffle(res.begin() , res.end() , rng);
-			return res;
+
 		}
 		else{
-			vector<vector<int>> adj(n , vector<int>(n,0));
-			for (int i = 1; i <= n; ++i)
+			for (int i = 1; i <= m; ++i)
 			{
-				for(int j=i+1,u,v; j<=n; j++) {
-					u = i , v = j; if(rng()&1) swap(u,v);
-					if(rng()&1){
-						res.push_back({u,v});
-					}
+				label2:
+				int u = rnd(1,n);
+				int v = rnd(1,n);
+				if(edge_set.count({u,v}) or edge_set.count({v,u})) goto label2;
+				else{
+					edge_set.insert({u,v});
 				}
 			}
-			shuffle(res.begin() , res.end() , rng);
-			res.erase(res.begin()+m , res.end());
-			return res;
 		}
+		for(auto i:edge_set){
+			res.push_back(i);
+		}
+		shuffle(res.begin() , res.end() , rng);
+		return res;
 	}
 };
 using namespace generator;
@@ -135,11 +133,12 @@ void example(){
 	for(auto i:v) cout << i << " "; cout << endl;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-// comment the next line in if you have multiple test_cases.
+// comment/uncomment the next line in if you have test_cases.
 #define SINGLE_TEST
-
+const int max_tests = 1;
 // complete this function for each test case.
 void make_test(){
+
 
 
 
@@ -149,7 +148,7 @@ int main(){
     // demo* d = new demo;
     int t = 1;
     #ifndef SINGLE_TEST 
-    	t = get_num(1,1000), cout << t << endl;
+    	t = get_num(1,max_tests), cout << t << endl;
     #endif
     while(t--){
     	make_test();
