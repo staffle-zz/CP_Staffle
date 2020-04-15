@@ -10,4 +10,5 @@ To test your code do these 3 steps.
 
 
 The python script will stop after running 1000 random test cases correctly or if it find a test case where there is different output for a and a_good.(It will print the case too :)
+If you find a bug , DM me or create an issue on github.
 
