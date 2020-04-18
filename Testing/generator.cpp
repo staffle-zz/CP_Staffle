@@ -70,7 +70,7 @@ namespace generator{
 				label2:
 				int u = rnd(1,n);
 				int v = rnd(1,n);
-				if(edge_set.count({u,v}) or edge_set.count({v,u})) goto label2;
+				if(u==v or edge_set.count({u,v}) or edge_set.count({v,u})) goto label2;
 				else{
 					edge_set.insert({u,v});
 				}
