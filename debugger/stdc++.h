@@ -22,7 +22,7 @@
 #include <stack>
 #include <iterator>
 #include <complex>
-
+#include <climits>
 using namespace std;
 
 #define n_l '\n'
@@ -121,13 +121,18 @@ using namespace std;
      return res;
  }
 
-void err(istream_iterator<string> it) {}
+void err(istream_iterator<string> it) {
+    cerr << endl;
+}
 
 template<typename T, typename... Args>
 void err(istream_iterator<string> it, T a, Args... args) {
-	cerr << *it << " = " << to_string(a) << endl;
+	cerr << *it << " = " << to_string(a) << "| ";
 	err(++it, args...);
 }
  
 #define dbg(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
 #define db(args...)  cerr << "[" << #args << "] = "; cerr << to_string(args)
+#define dbgl(...) cerr << "line " << __LINE__ << ": "; dbg(__VA_ARGS__)
+#define assrt(c) if(!(c)) {throw runtime_error(string() + #c + " Condition not satisfied in line " + to_string(__LINE__) + " in " + __PRETTY_FUNCTION__);}
+#define ONLINE_JUDGE 0
