@@ -1,6 +1,6 @@
 #include "bits/stdc++.h"
 using namespace std;using ll=long long;
-const int inf = 1e18;
+const ll inf = 1e18;
 const int mx = 1e5;
 
 
