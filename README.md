@@ -1,5 +1,5 @@
 # justforsharing
-These are some competative programming related files and codes (or piece of codes) 
-which i found helpful or i think others will find helpful.
+Colletion of tools and code snippets i use in Competitive Programming.
+You might find some of them cool and useful.
 
 Queries or Bug reports are appreciated in the Issues or email me at amit.dwivedi.nit@gmail.com
